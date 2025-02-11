@@ -11,13 +11,13 @@ import {
   coerceElement,
   coerceNumberProperty,
   normalizePassiveListenerOptions
-} from "./chunk-J5RE3RFN.js";
+} from "./chunk-K36CIC26.js";
 import {
   BidiModule
-} from "./chunk-SOTV55G5.js";
+} from "./chunk-63L36653.js";
 import {
   DOCUMENT
-} from "./chunk-MN424XK4.js";
+} from "./chunk-KA3SISMW.js";
 import {
   ANIMATION_MODULE_TYPE,
   APP_ID,
@@ -96,6 +96,7 @@ import {
 } from "./chunk-ZJCMGGPL.js";
 
 // node_modules/@angular/cdk/fesm2022/keycodes.mjs
+var BACKSPACE = 8;
 var TAB = 9;
 var ENTER = 13;
 var SHIFT = 16;
@@ -111,6 +112,7 @@ var LEFT_ARROW = 37;
 var UP_ARROW = 38;
 var RIGHT_ARROW = 39;
 var DOWN_ARROW = 40;
+var DELETE = 46;
 var ZERO = 48;
 var NINE = 57;
 var A = 65;
@@ -5186,6 +5188,8 @@ var _MatInternalFormField = class __MatInternalFormField {
 })();
 
 export {
+  BACKSPACE,
+  TAB,
   ENTER,
   ESCAPE,
   SPACE,
@@ -5193,6 +5197,7 @@ export {
   UP_ARROW,
   RIGHT_ARROW,
   DOWN_ARROW,
+  DELETE,
   A,
   hasModifierKey,
   ObserversModule,
@@ -5246,4 +5251,4 @@ export {
   MatRippleLoader,
   _MatInternalFormField
 };
-//# sourceMappingURL=chunk-WFSILMCH.js.map
+//# sourceMappingURL=chunk-IO4XRMKV.js.map

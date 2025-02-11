@@ -1,6 +1,6 @@
 import {
   getDOM
-} from "./chunk-MN424XK4.js";
+} from "./chunk-KA3SISMW.js";
 import {
   ChangeDetectorRef,
   Directive,
@@ -6796,6 +6796,7 @@ var ReactiveFormsModule = class _ReactiveFormsModule {
 })();
 
 export {
+  NG_VALUE_ACCESSOR,
   Validators,
   NgControl,
   NgForm,
@@ -6810,4 +6811,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-LUVEYA4V.js.map
+//# sourceMappingURL=chunk-ZTJYU2OA.js.map

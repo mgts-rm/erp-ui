@@ -5,22 +5,21 @@
               <mat-form-field class="inventory_form_field">
                 <mat-label>Select Inventory Item</mat-label>
                 <mat-select (selectionChange)="onInventoryChange($event)">
-                  <mat-option value="paddy">Paddy (unprocessed)</mat-option>
-                  <mat-option value="husked_rice">Husked rice (partially milled)</mat-option>
-                  <mat-option value="polished_rice">Polished rice (fully milled)</mat-option>
-                  <mat-option value="cloth_bags">Cloth bags</mat-option>
-                  <mat-option value="plastic_bags">Plastic bags</mat-option>
+                  <mat-option *ngFor="let item of inventoryItems" [value]="item.product_code">{{item.name}}</mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field class="inventory_form_field">
-                <mat-label>Quantity (kg or number of items)</mat-label>
-                <input matInput value="" (input)="onQuanityChange($event)">
+                  <mat-label>Quantity</mat-label>
+                  <input matInput value="" (input)="onQuanityChange($event)" type="number" min="0">
+                  @if (unitsValue) {
+                      <mat-chip matSuffix class="units">{{unitsValue}}</mat-chip>
+                  }
               </mat-form-field>
               <mat-form-field class="inventory_form_field text_area" value="" (input)="onInventoryUpdateReasonChange($event)">
                 <mat-label>Reason for adding/updating inventory</mat-label>
                 <textarea matInput></textarea>
               </mat-form-field>
-              <button mat-raised-button (click)="saveInventoryChanges()">Save</button>
+              <button mat-raised-button (click)="saveInventoryChanges()" [disabled]="invalidForm">Save</button>
         </mat-card-content>
     </mat-card>
 </div>
