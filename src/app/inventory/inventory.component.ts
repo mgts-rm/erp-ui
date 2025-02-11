@@ -17,15 +17,16 @@ import {MatChipsModule} from '@angular/material/chips';
 export class InventoryComponent {
 
   inventoryItems = [
-    {name: 'Paddy (unprocessed)', product_code: 'paddy'},
-    {name: 'Husked rice (partially milled)', product_code: 'husked_rice'},
-    {name: 'Polished rice (fully milled)', product_code: 'polished_rice'},
-    {name: 'Cloth bags', product_code: 'cloth_bags'},
-    {name: 'Plastic bags', product_code: 'plastic_bags'},
+    {product_name: 'Paddy (unprocessed)', product_code: 'paddy'},
+    {product_name: 'Husked rice (partially milled)', product_code: 'husked_rice'},
+    {product_name: 'Polished rice (fully milled)', product_code: 'polished_rice'},
+    {product_name: 'Cloth bags', product_code: 'cloth_bags'},
+    {product_name: 'Plastic bags', product_code: 'plastic_bags'},
   ];
 
-  addInventoryForm : {product_code:string, quantity:string, units: string, reason: string} = {
+  addInventoryForm : {product_code:string, product_name: string, quantity:string, units: string, reason: string} = {
     product_code:'',
+    product_name: '',
     quantity: '',
     units: '',
     reason:''
@@ -45,13 +46,9 @@ export class InventoryComponent {
   }
 
   onInventoryChange(event: MatSelectChange) {
-    console.log('inventory select event :', event.value)
-    this.addInventoryForm.product_code = event.value;
-  }
-
-  onUnitsChange(event: MatSelectChange) {
-    console.log('unit select event :', event.value)
-    this.addInventoryForm.product_code = event.value;
+    const itemSelected = event.value;
+    this.addInventoryForm.product_code = itemSelected.product_code;
+    this.addInventoryForm.product_name = itemSelected.product_name;
   }
 
   onQuanityChange(event: any) {

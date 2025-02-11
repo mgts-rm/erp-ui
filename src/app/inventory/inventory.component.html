@@ -5,7 +5,7 @@
               <mat-form-field class="inventory_form_field">
                 <mat-label>Select Inventory Item</mat-label>
                 <mat-select (selectionChange)="onInventoryChange($event)">
-                  <mat-option *ngFor="let item of inventoryItems" [value]="item.product_code">{{item.name}}</mat-option>
+                  <mat-option *ngFor="let item of inventoryItems" [value]="item">{{item.product_name}}</mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field class="inventory_form_field">
