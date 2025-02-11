@@ -1,0 +1,11 @@
+.inventory_content{
+    margin:30px;
+    .inventory_form_field{
+        display:block;
+        min-width:300px;
+        max-width: fit-content;
+    }
+    .inventory_form_field.text_area {
+            min-width: 500px;
+    }
+}
