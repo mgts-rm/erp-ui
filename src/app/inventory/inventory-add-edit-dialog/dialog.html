@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>{{data.action==='add' ? 'Add' : 'Update'}} Inventory</h2>
+<mat-dialog-content>
+  <div class="inventory_content">
+    <mat-form-field class="inventory_form_field">
+      <mat-label>Select Inventory Item</mat-label>
+      <mat-select (selectionChange)="onInventoryChange($event)" [value]="inventoryValueSelected" [disabled]="data.action==='edit'">
+        <mat-option *ngFor="let item of inventoryItems" [value]="item"
+          >{{item.product_name}}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="inventory_form_field">
+      <mat-label>Quantity</mat-label>
+      <input
+        matInput
+        [value]="data.inventory.quantity"
+        (input)="onQuanityChange($event)"
+        type="number"
+        min="0"
+      />
+      @if (unitsValue) {
+      <mat-chip matSuffix class="units">{{unitsValue}}</mat-chip>
+      }
+    </mat-form-field>
+    <mat-form-field
+      class="inventory_form_field text_area"
+      value=""
+      (input)="onInventoryUpdateReasonChange($event)"
+    >
+      <mat-label>Reason for adding/updating inventory</mat-label>
+      <textarea matInput [value]="data.inventory.reason"></textarea>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Close</button>
+  <button mat-button (click)="saveInventory()" [disabled]="disableSaveButton">
+    @if(saveInProgress) {
+      <mat-progress-spinner
+      [mode]="'indeterminate'"
+      [diameter]="25">
+  </mat-progress-spinner>
+    }@else {
+      Save
+    }
+  </button>
+</mat-dialog-actions>

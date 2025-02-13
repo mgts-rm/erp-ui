@@ -1,0 +1,31 @@
+.inventory_contatiner {
+    margin:20px;
+    .inventory_content {
+        margin-top:15px;
+    }
+    .inventory_items_data{
+        margin:20px;
+    }
+    .no_results_container {
+        margin:20px;
+        padding:20px;
+        border:1px solid lightcoral;
+    }
+    .actionIcon:hover{
+        background-color: lightblue;
+        border-radius: 50%;
+        color: purple;
+        cursor: pointer;
+      }
+      .add_inventory_button {
+        position: relative;
+        // left: 30px;
+        // bottom: 10px;
+      }
+      .search_add_inventory_fields{
+        display:flex;
+        .search_inventory_field{
+            margin-right:30px;
+        }
+      }
+}
