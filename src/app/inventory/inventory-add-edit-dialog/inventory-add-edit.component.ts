@@ -32,7 +32,7 @@ import { InventoryService } from "../../../services/inventory.service";
   selector: "app-inventory-add-edit",
   templateUrl: "./inventory-add-edit.component.html",
   styleUrl: "./inventory-add-edit.component.scss",
-  imports: [],
+  imports: [CommonModule],
 })
 export class InventoryAddEditDialogComponent implements AfterContentInit {
   @Input() inventoryItem: InventoryDataType = {
