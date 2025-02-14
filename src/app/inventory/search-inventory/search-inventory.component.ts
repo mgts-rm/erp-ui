@@ -29,7 +29,11 @@ export class SearchInventoryComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.inventoryService.findInventory(this.searchInventoryValue).subscribe((res:InventoryDataType[])=> {
+    this.searchInventory(this.searchInventoryValue);
+  }
+
+  searchInventory(name?: string) {
+    this.inventoryService.findInventory(name).subscribe((res:InventoryDataType[])=> {
       this.inventoryData = res;
     }, error=> {
       console.log('Error while getting inventory data :', error);
@@ -48,10 +52,11 @@ export class SearchInventoryComponent implements OnInit {
 
   }
 
-  searchInventory() {
+  searchClicked() {
     if(!this.searchInventoryValue) {
       return;
     }
+    this.searchInventory(this.searchInventoryValue);
     console.log('searchInventoryValue :', this.searchInventoryValue);
   }
 

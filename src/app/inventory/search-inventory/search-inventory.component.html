@@ -12,14 +12,14 @@
               matInput
               placeholder="Search by name"
               [(ngModel)]="searchInventoryValue"
-              (keyup.enter)="searchInventory()"
+              (keyup.enter)="searchClicked()"
             />
             <mat-icon
               matSuffix
               fontIcon="search"
               aria-hidden="false"
               aria-label="Search Inventory"
-              (click)="searchInventory()"
+              (click)="searchClicked()"
             ></mat-icon>
           </mat-form-field>
           <button mat-raised-button (click)="addNewInventory()" class="add_inventory_button">Add Inventory</button>

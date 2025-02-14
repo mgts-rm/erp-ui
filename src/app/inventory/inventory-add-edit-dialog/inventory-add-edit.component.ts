@@ -89,17 +89,25 @@ export class DialogAddEditInventory {
   selectedInventory?: { product_code: string; product_name: string };
 
   inventoryItems = [
-    { product_name: "Paddy (unprocessed)", product_code: "paddy" },
+    { product_name: "Paddy (unprocessed)",
+      product_code: "550e8400-e29b-41d4-a716-446655440000" 
+    },
     {
       product_name: "Husked rice (partially milled)",
-      product_code: "husked_rice",
+      product_code: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
     },
     {
       product_name: "Polished rice (fully milled)",
-      product_code: "polished_rice",
+      product_code: "9a8b7c6d-1234-4ef0-b89a-abcdef123456",
     },
-    { product_name: "Cloth bags", product_code: "cloth_bags" },
-    { product_name: "Plastic bags", product_code: "plastic_bags" },
+    { 
+      product_name: "Cloth bags",
+      product_code: "3fa85f64-5717-4562-b3fc-2c963f66afa6" 
+    },
+    { 
+      product_name: "Plastic bags",
+      product_code: "16fd2706-8baf-433b-82eb-8c7fada847da"
+    },
   ];
   unitsValue: string = "";
   saveInProgress?: boolean;
@@ -156,18 +164,14 @@ export class DialogAddEditInventory {
   saveInventory() {
     this.saveInProgress = true;
     this.inventoryService.addOrUpdateInventory(this.data.action, this.data.inventory).subscribe(res=> {
-      setTimeout(() => {
         console.log('add or update successful :', res);
         this.saveInProgress =  false;
         this.closeDialog(); 
-      }, 2000);
 
     }, error=> {
-      setTimeout(() => {
         console.log('add or update error :', error);
         this.saveInProgress =  false;
         this.closeDialog(); 
-      }, 2000);
     })
   }
 }
