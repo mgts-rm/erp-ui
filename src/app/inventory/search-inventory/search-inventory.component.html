@@ -13,6 +13,7 @@
               placeholder="Search by name"
               [(ngModel)]="searchInventoryValue"
               (keyup.enter)="searchClicked()"
+              (input)="onSearchInput($event)"
             />
             <mat-icon
               matSuffix

@@ -30,6 +30,11 @@ export class SearchInventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchInventory(this.searchInventoryValue);
+
+    this.inventoryService.inventoryUpdateEvent.subscribe(value=> {
+      console.log('value :', value);
+    })
+    
   }
 
   searchInventory(name?: string) {
@@ -53,11 +58,16 @@ export class SearchInventoryComponent implements OnInit {
   }
 
   searchClicked() {
-    if(!this.searchInventoryValue) {
-      return;
-    }
     this.searchInventory(this.searchInventoryValue);
     console.log('searchInventoryValue :', this.searchInventoryValue);
+  }
+
+  onSearchInput(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.value === '') {
+      this.searchInventory(this.searchInventoryValue);
+    }
+  
   }
 
   addNewInventory() {

@@ -145,8 +145,8 @@ export class DialogAddEditInventory {
 
     // set units of inventory quantity based on the type of inventory item
     const unitValue =
-      itemSelected.product_code === "plastic_bags" ||
-      itemSelected.product_code === "cloth_bags"
+      itemSelected.product_code === "16fd2706-8baf-433b-82eb-8c7fada847da" ||
+      itemSelected.product_code === "3fa85f64-5717-4562-b3fc-2c963f66afa6"
         ? "no."
         : "kg";
     this.unitsValue = unitValue;
@@ -167,11 +167,13 @@ export class DialogAddEditInventory {
         console.log('add or update successful :', res);
         this.saveInProgress =  false;
         this.closeDialog(); 
+        this.inventoryService.inventoryUpdateEvent.next({status:'success', action: this.data.action})
 
     }, error=> {
         console.log('add or update error :', error);
         this.saveInProgress =  false;
-        this.closeDialog(); 
+        this.closeDialog();
+        this.inventoryService.inventoryUpdateEvent.next({status:'error', action: this.data.action, message:error.error?.message})
     })
   }
 }
