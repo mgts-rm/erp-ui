@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Compiled output
+dist/
+tmp/
+out-tsc/
+
+# Firebase
+firebase-debug.log
+.firebase/
+
+# IDE and Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Angular specific
+.angular/
+
+# Environment files (don't commit secrets)
+src/environments/environment*.ts
+
+# Dependencies
+package-lock.json
+yarn.lock
+
+# Mac and System files
+.DS_Store
+Thumbs.db
+.vercel
