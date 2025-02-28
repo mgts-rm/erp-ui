@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "default": "mgts-rm-erp-dev",
+    "dev": "mgts-rm-erp-dev",
+    "qa": "mgts-rm-erp-qa",
+    "prod": "mgts-rm-erp-prod"
+  },
+  "targets": {},
+  "etags": {}
+}
