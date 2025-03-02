@@ -8,7 +8,7 @@ const hostname = window.location.hostname;
 
 const envConfig:Record<string, typeof devEnv> = {
   'localhost': local,  // Localhost uses development
-  'dev.example.com': devEnv,  // Dev server
+  'erp-api-dev.vercel.app': devEnv,  // Dev server
   'staging.example.com': qaEnv,  // QA server
   'www.example.com': prodEnv,  // Production
   'example.com': prodEnv  // Production
