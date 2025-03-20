@@ -1,0 +1,127 @@
+.app_toolbar {
+    height: 50px;
+    background: #452842;
+    color: #ffff;
+    border-bottom: 2px solid #8C5888;
+
+    .toolbar_content {
+        display: flex;
+        width:100%;
+        justify-content: space-between;
+        .left_info {
+            .toogle_sidebar_button {
+                color: #ffff;
+            }
+            .toogle_sidebar_button:hover {
+                background: #8C5888;
+            }
+
+            .company_brand_logo {
+                font-size:12px;
+                border:1px solid #ffff;
+                border-radius: 50%;
+                padding:5px;
+                position: relative;
+                bottom:8px;
+                margin-left:20px;
+                filter: brightness(60%);
+            }
+            .org_title{
+                color:rgb(211, 203, 210);
+                margin-left:25px;
+                position: relative;
+                bottom: 7px;
+                font-size: 16px;
+            }
+        }
+
+        .right_info {
+            .toolbar_icons{
+                color: #ffff;
+                margin:5px;
+            }
+            .toolbar_icons:hover {
+                background: #8C5888;
+            }
+        }
+    }
+}
+
+.sidenav_container {
+    display: flex;
+    flex-grow: 1;
+    height: calc(100vh - 35px - 50px); //subtract header and footer height
+}
+
+mat-sidenav {
+    background: #4F2F4C;
+    max-width: 250px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+mat-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.content-area {
+    flex: 1;
+    padding: 16px;
+    overflow: auto;
+    /* Enables scrolling if content overflows */
+}
+
+.sidebar_nav_item {
+    color: rgb(211, 203, 210);
+}
+
+.nav_list {
+    margin: 15px 0;
+}
+
+.nav_list_item:hover {
+    background: #8C5888;
+    filter: brightness(80%);
+
+    .sidebar_nav_item {
+        color: #ffff;
+    }
+}
+
+.nav_list_item.active {
+    background: #8C5888;
+    filter: brightness(100%);
+
+    .sidebar_nav_item {
+        color: #ffff;
+    }
+}
+
+.sidenav_content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.app_footer {
+    background-color: #8C5888;
+    filter: brightness(80%);
+    color: #ffff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    height: 35px;
+}
+
+.footer_content a {
+    color: rgb(211, 203, 210);
+    text-decoration: none;
+    margin-left: 10px;
+}

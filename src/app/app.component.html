@@ -1,1 +1,78 @@
-<router-outlet></router-outlet>
+<div class="app_contatiner">
+    <mat-toolbar class="app_toolbar">
+        <div class="toolbar_content">
+            <div class="left_info">
+                <button mat-icon-button (click)="toggleSidebar()" class="toogle_sidebar_button">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span class="company_brand_logo toolbar_text"><i>MGTS</i></span>
+                @if(orgLoginActive) {
+                    <span class="org_title toolbar_text">ABC Rice Mill</span>
+                }
+                @else {
+                    <span class="org_title toolbar_text">Management Tech Solutions Inc.</span>
+                }
+
+            </div>
+            <div class="right_info">
+                <button mat-icon-button matTooltip="Help" class="toolbar_icons">
+                    <mat-icon>help</mat-icon>
+                </button>
+
+                <button mat-icon-button matTooltip="User Profile" class="toolbar_icons" [matMenuTriggerFor]="userProfileMenu">
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+
+            </div>
+        </div>
+
+    </mat-toolbar>
+    <mat-sidenav-container class="sidenav_container">
+        <!-- Sidebar -->
+        <mat-sidenav #sidenav mode="side" [opened]="sidebarOpen">
+            <mat-nav-list class="nav_list">
+                <a class="nav_list_item" mat-list-item [routerLink]="'/dashboard'"
+                [ngClass]="{'active': isActiveRoute('/dashboard')}" routerLinkActive="active">
+                    <span class="sidebar_nav_item">Dashboard</span>
+                </a>
+                <a class="nav_list_item" mat-list-item [routerLink]="'/inventory'" routerLinkActive="active"
+                [ngClass]="{'active': isActiveRoute('/inventory')}">
+                    <span class="sidebar_nav_item">Inventory</span>
+                </a>
+                <a class="nav_list_item" mat-list-item [routerLink]="'/sales'" routerLinkActive="active"
+                [ngClass]="{'active': isActiveRoute('/sales')}">
+                    <span class="sidebar_nav_item">Sales</span>
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+    
+        <!-- Main Content Area -->
+        <mat-sidenav-content class="content sidenav_content">
+            
+            <div class="content-area">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+    <footer class="app_footer">
+        <div class="footer_content">
+          <span>© 2025 MGTS</span>
+          <span> | </span>
+          <a href="/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a>
+          <a href="/terms" target="_blank" rel="noreferrer">Terms of Service</a>
+        </div>
+    </footer>    
+</div>
+
+
+<mat-menu #userProfileMenu="matMenu">
+    @if(loginActive) {
+        <button mat-menu-item [routerLink]="'/inventory'">My Account</button>
+        <button mat-menu-item>Sign Out</button>
+    }
+    @else {
+        <button mat-menu-item [routerLink]="'/signin'">Sign In</button>
+        <button mat-menu-item [routerLink]="'/create-profile'">Create Account/Sign Up</button>
+    }
+</mat-menu>
