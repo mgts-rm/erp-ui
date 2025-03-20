@@ -9,6 +9,8 @@
         width:100%;
         justify-content: space-between;
         .left_info {
+            display:flex;
+            align-items: center;
             .toogle_sidebar_button {
                 color: #ffff;
             }
@@ -20,17 +22,13 @@
                 font-size:12px;
                 border:1px solid #ffff;
                 border-radius: 50%;
-                padding:5px;
-                position: relative;
-                bottom:8px;
+                padding:2px;
                 margin-left:20px;
                 filter: brightness(60%);
             }
             .org_title{
                 color:rgb(211, 203, 210);
                 margin-left:25px;
-                position: relative;
-                bottom: 7px;
                 font-size: 16px;
             }
         }
