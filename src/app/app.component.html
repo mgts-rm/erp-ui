@@ -33,15 +33,24 @@
             <mat-nav-list class="nav_list">
                 <a class="nav_list_item" mat-list-item [routerLink]="'/dashboard'"
                 [ngClass]="{'active': isActiveRoute('/dashboard')}" routerLinkActive="active">
-                    <span class="sidebar_nav_item">Dashboard</span>
+                    <span class="sidebar_nav_item">
+                        <mat-icon class="sidebar_nav_icon">dashboard</mat-icon>
+                        Dashboard
+                    </span>
                 </a>
                 <a class="nav_list_item" mat-list-item [routerLink]="'/inventory'" routerLinkActive="active"
                 [ngClass]="{'active': isActiveRoute('/inventory')}">
-                    <span class="sidebar_nav_item">Inventory</span>
+                    <span class="sidebar_nav_item">
+                        <mat-icon class="sidebar_nav_icon">warehouse</mat-icon>
+                        Inventory
+                    </span>
                 </a>
                 <a class="nav_list_item" mat-list-item [routerLink]="'/sales'" routerLinkActive="active"
                 [ngClass]="{'active': isActiveRoute('/sales')}">
-                    <span class="sidebar_nav_item">Sales</span>
+                    <span class="sidebar_nav_item">
+                        <mat-icon class="sidebar_nav_icon">monetization_on</mat-icon>
+                        Sales
+                    </span>
                 </a>
             </mat-nav-list>
         </mat-sidenav>
@@ -66,13 +75,21 @@
 </div>
 
 
-<mat-menu #userProfileMenu="matMenu">
-    @if(loginActive) {
-        <button mat-menu-item [routerLink]="'/inventory'">My Account</button>
-        <button mat-menu-item>Sign Out</button>
-    }
-    @else {
-        <button mat-menu-item [routerLink]="'/signin'">Sign In</button>
-        <button mat-menu-item [routerLink]="'/create-profile'">Create Account/Sign Up</button>
-    }
+<mat-menu #userProfileMenu="matMenu" class="user_menu">
+    <div class="user_menu">
+        @if(loginActive) {
+            <button mat-menu-item [routerLink]="'/inventory'">My Account</button>
+            <button mat-menu-item>Sign Out</button>
+        }
+        @else {
+            <button mat-menu-item [routerLink]="'/signin'">
+                <mat-icon class="user_menu_icon">login</mat-icon>
+                Sign In
+            </button>
+            <button mat-menu-item [routerLink]="'/create-profile'">
+                <mat-icon class="user_menu_icon">person_add</mat-icon>
+                Create Account
+            </button>
+        }
+    </div>
 </mat-menu>

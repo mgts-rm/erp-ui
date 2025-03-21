@@ -1,1 +1,157 @@
-<p>create-profile works!</p>
+<mat-card class="create_profile_card">
+    <mat-stepper #stepper class="create_profile_stepper">
+        <!-- Step 1: User Details -->
+        <mat-step [stepControl]="userDetailsFormGroup" errorMessage="Form is not valid.">
+            <form [formGroup]="userDetailsFormGroup">
+                <ng-template matStepLabel>User details</ng-template>
+
+                <div class="form_contatiner">
+                    <mat-form-field class="form_field">
+                        <mat-label>First Name</mat-label>
+                        <input matInput placeholder="First name" formControlName="firstName" required>
+                    </mat-form-field>
+    
+                    <mat-form-field class="form_field">
+                        <mat-label>Middle Name</mat-label>
+                        <input matInput placeholder="Middle name" formControlName="middleName">
+                    </mat-form-field>
+    
+                    <mat-form-field class="form_field">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput placeholder="Last name" formControlName="lastName" required>
+                    </mat-form-field>
+    
+                    <mat-form-field class="form_field">
+                        <mat-label>Phone</mat-label>
+                        <input matInput placeholder="Phone" formControlName="phone" required>
+                        <mat-error *ngIf="userDetailsFormGroup.controls.phone.errors?.['pattern']">
+                            Enter a valid 10-digit phone number.
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field class="form_field">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Email" formControlName="email" required>
+                        <mat-error *ngIf="userDetailsFormGroup.controls.email.errors?.['email']">
+                            Enter a valid email.
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <!-- Password with Show/Hide Icon -->
+                    <mat-form-field class="form_field">
+                        <mat-label>Password</mat-label>
+                        <input [type]="passwordVisible ? 'text' : 'password'" matInput placeholder="Password"
+                            formControlName="password" required>
+                        <button mat-icon-button matSuffix (click)="passwordVisible = !passwordVisible" type="button">
+                            <mat-icon>{{ passwordVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="userDetailsFormGroup.controls.password.errors?.['minlength']">
+                            Password must be at least 8 characters.
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <!-- Confirm Password with Validation -->
+                    <mat-form-field class="form_field">
+                        <mat-label>Confirm Password</mat-label>
+                        <input [type]="confirmPasswordVisible ? 'text' : 'password'" matInput placeholder="Confirm Password"
+                            formControlName="confirmPassword" required>
+                        <button mat-icon-button matSuffix (click)="confirmPasswordVisible = !confirmPasswordVisible"
+                            type="button">
+                            <mat-icon>{{ confirmPasswordVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="userDetailsFormGroup.errors?.['passwordMismatch']">
+                            Passwords do not match.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="stepper_action_buttons">
+                    <button mat-raised-button color="primary" matStepperNext
+                        [disabled]="userDetailsFormGroup.invalid">Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- Step 2: Organization Details -->
+        <mat-step [stepControl]="organizationDetailsFormGroup" errorMessage="Form is not valid.">
+            <form [formGroup]="organizationDetailsFormGroup">
+                <ng-template matStepLabel>Organization details</ng-template>
+                <div class="form_contatiner">
+                <mat-form-field class="form_field">
+                    <mat-label>Organization Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="orgName" required>
+                </mat-form-field>
+
+                <mat-form-field class="form_field">
+                    <mat-label>Organization Id</mat-label>
+                    <input matInput placeholder="ID" formControlName="orgId" required>
+                </mat-form-field>
+
+                <mat-form-field class="form_field">
+                    <mat-label>Organization Phone</mat-label>
+                    <input matInput placeholder="Phone" formControlName="orgPhone" required>
+                </mat-form-field>
+
+                <!-- Address Group -->
+                <mat-form-field class="form_field">
+                    <mat-label>Street Address 1</mat-label>
+                    <input matInput placeholder="Street Address 1" formControlName="street1" required>
+                </mat-form-field>
+                <mat-form-field class="form_field">
+                    <mat-label>Street Address 2</mat-label>
+                    <input matInput placeholder="Street Address 2" formControlName="street2">
+                </mat-form-field>
+                <mat-form-field class="form_field">
+                    <mat-label>Street Address 3</mat-label>
+                    <input matInput placeholder="Street Address 3" formControlName="street3">
+                </mat-form-field>
+                <mat-form-field class="form_field">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City" formControlName="city" required>
+                </mat-form-field>
+                <mat-form-field class="form_field">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="State" formControlName="state" required>
+                </mat-form-field>
+                <mat-form-field class="form_field">
+                    <mat-label>Country</mat-label>
+                    <input matInput placeholder="Country" formControlName="country" required>
+                </mat-form-field>
+                </div>
+
+                <div class="stepper_action_buttons">
+                    <button mat-raised-button color="secondary" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary" matStepperNext
+                        [disabled]="organizationDetailsFormGroup.invalid">Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!-- Step 3: Inventory Details -->
+        <mat-step>
+            <form>
+                <ng-template matStepLabel>Inventory details</ng-template>
+
+                <div class="notification_contatiner">
+                    <div class="inventory_notification info">
+                        <div class="notification-content">
+                            <div class="notification-icon">
+                                <mat-icon>info</mat-icon>
+                            </div>
+                            <div class="notification-message">
+                                <span>Once profile is created, you will be navigated to a page for adding inventory to your organization.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stepper_action_buttons final_Actions">
+                    <button mat-raised-button color="secondary" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary" [disabled]="userDetailsFormGroup.invalid || organizationDetailsFormGroup.invalid">Create
+                        Profile</button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-stepper>
+</mat-card>

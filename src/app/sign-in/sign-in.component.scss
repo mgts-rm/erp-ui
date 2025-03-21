@@ -1,0 +1,31 @@
+.login-card {
+    width: 400px;
+    margin: auto;
+    padding: 25px;
+    text-align: center;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+
+  .forgot-password, .signup a {
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+  }
+
+  .signup {
+    margin-top: 12px;
+  }
+
+  button[mat-icon-button] {
+    color: rgba(0, 0, 0, 0.54);
+  }

@@ -1,1 +1,57 @@
-<p>sign-in works!</p>
+<mat-card class="login-card">
+    <h2>Login</h2>
+
+    <!-- Form starts -->
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <!-- Email Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input 
+          matInput 
+          type="email" 
+          placeholder="Enter your email" 
+          name="email" 
+          [(ngModel)]="email" 
+          #emailInput="ngModel"
+          required
+        />
+        <mat-error *ngIf="emailInput.invalid && emailInput.touched">
+          Email is required.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input 
+          matInput 
+          [type]="passwordVisible() ? 'text' : 'password'" 
+          placeholder="Enter your password"
+          name="password" 
+          [(ngModel)]="password" 
+          #passwordInput="ngModel"
+          required
+        />
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+          <mat-icon>{{ passwordVisible() ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordInput.invalid && passwordInput.touched">
+          Password is required.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Forgot Password -->
+      <div class="actions">
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+
+      <!-- Login Button -->
+      <button mat-raised-button color="primary" class="full-width" [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+      <!-- Sign Up Link -->
+      <div class="signup">
+        Don't have an account? <a href="#" [routerLink]="'/create-profile'">Sign up</a>
+      </div>
+    </form>

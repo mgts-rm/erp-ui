@@ -1,8 +1,16 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.menu-overrides((
+    container-color: orange,
+    item-icon-color: red,
+  ));
+}
 .app_toolbar {
     height: 50px;
     background: #452842;
     color: #ffff;
-    border-bottom: 2px solid #8C5888;
 
     .toolbar_content {
         display: flex;
@@ -49,11 +57,12 @@
     display: flex;
     flex-grow: 1;
     height: calc(100vh - 35px - 50px); //subtract header and footer height
+    border: 2px solid #8C5888;
 }
 
 mat-sidenav {
     background: #4F2F4C;
-    max-width: 250px;
+    width: 250px;
 }
 
 .content {
@@ -77,6 +86,11 @@ mat-toolbar {
 
 .sidebar_nav_item {
     color: rgb(211, 203, 210);
+}
+
+.sidebar_nav_icon{
+    position: relative;
+    top: 6px;
 }
 
 .nav_list {
@@ -105,6 +119,7 @@ mat-toolbar {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    height:100%;
     overflow: auto;
 }
 
@@ -122,4 +137,28 @@ mat-toolbar {
     color: rgb(211, 203, 210);
     text-decoration: none;
     margin-left: 10px;
+}
+
+.mat-mdc-menu-content {
+    background-color: #8C5888;
+    filter: brightness(80%);
+    color: #ffff;
+
+}
+
+::ng-deep .mat-mdc-menu-content{
+    background-color: #8C5888 !important;
+
+}
+.user_menu {
+    button {
+        color: #ffff;
+        font-weight: 500;
+    }
+    button:hover {
+        background: #a77ba7;
+    }
+    .user_menu_icon{
+        color: #ffff
+    }
 }

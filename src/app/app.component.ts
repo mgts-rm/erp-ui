@@ -25,7 +25,7 @@ import {MatMenuModule} from '@angular/material/menu';
 export class AppComponent {
   title = 'MGTS-ERP-APP';
   currentRoute: string = '';
-  sidebarOpen = false;
+  sidebarOpen = true;
   orgLoginActive = false;
   loginActive=false;
 
