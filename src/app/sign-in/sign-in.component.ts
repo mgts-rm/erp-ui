@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-signin',
@@ -20,7 +21,7 @@ import { AuthenticationService } from '../../services/authentication.service';
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
@@ -30,7 +31,7 @@ export class SignInComponent {
   password: string = '';
   passwordVisible = signal(false);
 
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   togglePasswordVisibility() {
     this.passwordVisible.set(!this.passwordVisible());
@@ -43,10 +44,12 @@ export class SignInComponent {
         response => {
           console.log('Login successful:', response);
           this.authenticationService.userLoggedIn = true;
-          // Handle successful login here
+          this.authenticationService.loggedInUserData = response;
+          this.router.navigate(['/my-account']);
         },
         error => {
           this.authenticationService.userLoggedIn = false;
+          this.authenticationService.loggedInUserData = null
           console.log('signin error:', error);
         });
     }

@@ -78,8 +78,8 @@
 <mat-menu #userProfileMenu="matMenu" class="user_menu">
     <div class="user_menu">
         @if(loginActive) {
-            <button mat-menu-item [routerLink]="'/inventory'">My Account</button>
-            <button mat-menu-item>Sign Out</button>
+            <button mat-menu-item [routerLink]="'/my-account'">My Account</button>
+            <button mat-menu-item (click)="signOut()">Sign Out</button>
         }
         @else {
             <button mat-menu-item [routerLink]="'/signin'">

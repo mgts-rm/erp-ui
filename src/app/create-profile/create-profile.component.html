@@ -85,7 +85,7 @@
 
                 <mat-form-field class="form_field">
                     <mat-label>Organization Id</mat-label>
-                    <input matInput placeholder="ID" formControlName="orgId" required>
+                    <input matInput placeholder="ID" formControlName="orgId">
                 </mat-form-field>
 
                 <mat-form-field class="form_field">
@@ -118,6 +118,10 @@
                     <mat-label>Country</mat-label>
                     <input matInput placeholder="Country" formControlName="country" required>
                 </mat-form-field>
+                <mat-form-field class="form_field">
+                    <mat-label>Pin code/ Zip code</mat-label>
+                    <input matInput placeholder="Enter" formControlName="pincode" required>
+                </mat-form-field>
                 </div>
 
                 <div class="stepper_action_buttons">
@@ -148,7 +152,7 @@
 
                 <div class="stepper_action_buttons final_Actions">
                     <button mat-raised-button color="secondary" matStepperPrevious>Back</button>
-                    <button mat-raised-button color="primary" [disabled]="userDetailsFormGroup.invalid || organizationDetailsFormGroup.invalid">Create
+                    <button mat-raised-button color="primary" [disabled]="userDetailsFormGroup.invalid || organizationDetailsFormGroup.invalid" (click)="createProfile()">Create
                         Profile</button>
                 </div>
             </form>

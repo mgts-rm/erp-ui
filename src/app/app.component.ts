@@ -51,4 +51,8 @@ export class AppComponent {
   isActiveRoute(route: string): boolean {
     return this.currentRoute === route;
   }
+
+  signOut() {
+    window.location.reload()
+  }
 }

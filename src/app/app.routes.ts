@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SalesComponent } from './sales/sales.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 export const routes: Routes = [
 { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Default route
@@ -13,4 +14,5 @@ export const routes: Routes = [
 {path: 'sales', component: SalesComponent},
 {path: 'signin', component: SignInComponent},
 {path: 'create-profile', component: CreateProfileComponent},
+{path: 'my-account', component: MyAccountComponent},
 ];

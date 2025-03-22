@@ -1,0 +1,38 @@
+<mat-card>
+    @if (logginUserInfo) {
+    <mat-card-header>
+        <mat-card-title>My Account</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div class="tabs">
+            <mat-tab-group>
+                <!-- User Details Tab -->
+                <mat-tab label="User Details">
+                    <div class="tabContent">
+                        {{logginUserInfo.userDetails | json}}
+                    </div>
+                </mat-tab>
+    
+                <!-- Org Details Tab -->
+                <mat-tab label="Org Details">
+                    <div class="tabContent">
+                    {{logginUserInfo.orgDetails | json}}
+                    </div>
+                </mat-tab>
+    
+                <!-- Inventory Details Tab -->
+                <mat-tab label="Inventory Details">
+                    <div class="tabContent">
+                    Inventory section coming soon
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+    </mat-card-content>
+    }
+    @else {
+    <p>Please log in to view your account details.</p>
+    }
+</mat-card>

@@ -8,6 +8,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '@angular/router';
 
 export const passwordMatchValidator: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
   const passwordControl = group.get('password');
@@ -73,7 +75,7 @@ export class CreateProfileComponent{
 
   organizationDetailsFormGroup = this._formBuilder.group({
     orgName: ['', Validators.required],
-    orgId: ['', Validators.required],
+    orgId: [''],
     orgPhone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
     street1: ['', Validators.required],
     street2: [''],
@@ -81,9 +83,36 @@ export class CreateProfileComponent{
     city: ['', Validators.required],
     state: ['', Validators.required],
     country: ['', Validators.required],
+    pincode: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
   });
 
   passwordVisible = false;
   confirmPasswordVisible = false;
+
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+
+  createProfile() {
+    if (this.userDetailsFormGroup.valid && this.organizationDetailsFormGroup.valid) {
+      const userDetails = this.userDetailsFormGroup.value;
+      const organizationDetails = this.organizationDetailsFormGroup.value;
+      console.log('User Details:', userDetails);
+      console.log('Organization Details:', organizationDetails);
+      const profileData = {
+        userDetails: {...userDetails},
+        orgDetails: {...organizationDetails},
+      };
+      this.authenticationService.createProfile(profileData).subscribe((response) => {
+        console.log('Profile created successfully:', response);
+
+        this.router.navigate(['/my-account']);
+        this.authenticationService.userLoggedIn = true;
+        this.authenticationService.loggedInUserData = response;
+      }, (error) => {
+        console.error('Error creating profile:', error);
+      });
+    } else {
+      console.log('Form is invalid');
+    }
+  }
   
 }
