@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, model, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -11,6 +11,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { InventoryDataType, InventoryItem } from '../inventory.model';
 import { InventoryService } from '../../../services/inventory.service';
 import { InventoryAddEditDialogComponent } from '../inventory-add-edit-dialog/inventory-add-edit.component';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-search-inventory',
@@ -25,8 +26,11 @@ export class SearchInventoryComponent implements OnInit {
   displayAddOrEditInventory = signal(false);
   inventoryAction?: 'add' |  'edit';
   editableInventoryDataItem!: InventoryDataType;
-  constructor(private inventoryService: InventoryService){}
+  constructor(private inventoryService: InventoryService, private authenticationService: AuthenticationService){}
 
+  get loginActive() {
+    return this.authenticationService.userLoggedIn;
+  }
 
   ngOnInit(): void {
     this.searchInventory(this.searchInventoryValue);

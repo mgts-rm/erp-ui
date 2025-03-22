@@ -12,6 +12,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatMenuModule} from '@angular/material/menu';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 
@@ -27,9 +28,13 @@ export class AppComponent {
   currentRoute: string = '';
   sidebarOpen = true;
   orgLoginActive = false;
-  loginActive=false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
+  }
+
+  get loginActive() {
+    return this.authenticationService.userLoggedIn;
+  }
 
   ngOnInit() {
     this.router.events

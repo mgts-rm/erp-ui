@@ -1,3 +1,4 @@
+@if(loginActive) {
 <mat-card appearance="raised" class="inventory_contatiner">
   <mat-card-header>
     <mat-card-title>Inventory</mat-card-title>
@@ -63,4 +64,11 @@
 
 @if (displayAddOrEditInventory()) {
   <app-inventory-add-edit [displayAddOrEditInventory]="displayAddOrEditInventory" [action]="inventoryAction" [inventoryItem]="editableInventoryDataItem"></app-inventory-add-edit>
+}
+
+}
+@else {
+  <div class="login_required">
+    <p>Please login to view this page.</p>
+  </div>
 }
